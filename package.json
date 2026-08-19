@@ -1,6 +1,7 @@
 {
   "name": "fisheye",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,12 +10,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.9.1",
+    "@prisma/client": "^7.9.1",
     "next": "16.3.1",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
     "eslint": "^9",
-    "eslint-config-next": "16.3.1"
+    "eslint-config-next": "16.3.1",
+    "prisma": "^7.9.1",
+    "tsx": "^4.23.12"
   }
 }
