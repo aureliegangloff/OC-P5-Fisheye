@@ -1,0 +1,45 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      text-decoration-color: var(--text-primary);
+    }
+  }
+}
+.portraitContainer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  img {
+    border-radius: 100%;
+    object-fit: cover;
+    overflow-clip-margin: unset;
+    margin-bottom: 20px;
+  }
+}
+.cardTitle {
+  font-size: 3.6em;
+  color: var(--text-primary);
+}
+.cardLocation {
+  font-size: 1.3em;
+  color: var(--text-tertiary);
+}
+.cardTagline {
+  margin-bottom: 3px;
+}
+.cardPrice {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+}

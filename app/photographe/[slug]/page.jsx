@@ -1,6 +1,6 @@
-import styles from "./page.module.css";
 import { getPhotographer, getAllPhotographers } from "../../lib/prisma-db";
 import Header from "../../components/Header/Header.jsx";
+import PhotographerHeader from "../../components/PhotographerHeader/PhotographerHeader.jsx";
 
 export default async function Home({ params }) {
   const { slug } = await params;
@@ -13,11 +13,12 @@ export default async function Home({ params }) {
   return (
     <div className="container">
       <Header></Header>
-      <h1>{photographer.name}</h1>
-      <p className={styles.cardLocation}>
-        {photographer.city}, {photographer.country}
-      </p>
-      <p className={styles.cardTagline}> {photographer.tagline} </p>
+      <main role="main">
+        <section role="region" aria-label={`Page de ${photographer.name}`}>
+          <PhotographerHeader photographer={photographer}></PhotographerHeader>
+          <main></main>
+        </section>
+      </main>
     </div>
   );
 }
