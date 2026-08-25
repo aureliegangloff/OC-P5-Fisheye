@@ -8,9 +8,8 @@ import Image from "next/image";
 import Filter from "../Filter/Filter";
 import PhotographerGallery from "../PhotographerGallery/PhotographerGallery";
 
-import Modal from "../Modal/Modal";
-
 import { useState, useEffect } from "react";
+import ContactModal from "../ContactModal/ContactModal";
 
 export default function PhotographerProfile({
   photographer,
@@ -67,7 +66,7 @@ export default function PhotographerProfile({
       </div>
 
       {isModalOpen && (
-        <Modal
+        <ContactModal
           photographer={photographer}
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}

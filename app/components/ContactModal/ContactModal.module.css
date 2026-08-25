@@ -1,0 +1,58 @@
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.modalTitle {
+  color: #000000;
+  font-size: 6.4rem;
+  line-height: 1.1;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactForm label {
+  color: #312e2e;
+  font-size: 3.6em;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 0;
+  border-radius: 5px;
+  font: inherit;
+  font-size: 1.6rem;
+}
+
+.contactForm textarea {
+  resize: vertical;
+}
+.formSubmit {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  border: none;
+  border-radius: 5px;
+  font-family: var(--font-DMSans);
+  font-weight: bold;
+  cursor: pointer;
+
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 23px 50px;
+  font-size: 1.8rem;
+
+  &:hover,
+  &:focus {
+    background-color: var(--button-primary-bg-hover);
+    color: var(--button-primary-text-hover);
+  }
+}

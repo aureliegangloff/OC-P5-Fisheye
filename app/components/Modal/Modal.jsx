@@ -1,6 +1,11 @@
 import styles from "./Modal.module.css";
 import { useEffect } from "react";
-export default function Modal({ photographer, isModalOpen, setIsModalOpen }) {
+export default function Modal({
+  children,
+  isModalOpen,
+  setIsModalOpen,
+  buttonLabel,
+}) {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -21,45 +26,14 @@ export default function Modal({ photographer, isModalOpen, setIsModalOpen }) {
       aria-labelledby="modalTitle"
     >
       <div className={styles.modalContent}>
-        <header className={styles.modalHeader}>
-          <h1 id="modalTitle" className={styles.modalTitle}>
-            Contactez-moi
-            <br />
-            {photographer.name}
-          </h1>
-          <button
-            type="button"
-            className={styles.modalCloseButton}
-            onClick={() => setIsModalOpen(false)}
-            aria-label="Close Contact form"
-          ></button>
-        </header>
-        <form
-          className={styles.contactForm}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <label htmlFor="firstName">Prénom</label>
-          <input
-            id="firstName"
-            name="firstName"
-            type="text"
-            required
-            autoFocus
-          />
+        <button
+          type="button"
+          className={styles.modalCloseButton}
+          onClick={() => setIsModalOpen(false)}
+          aria-label={buttonLabel}
+        ></button>
 
-          <label htmlFor="lastName">Nom</label>
-          <input id="lastName" name="lastName" type="text" required />
-
-          <label htmlFor="email">Email</label>
-          <input id="email" name="email" type="email" required />
-
-          <label htmlFor="message">Votre message</label>
-          <textarea id="message" name="message" rows="5" required />
-
-          <button type="submit" className={styles.formSubmit} aria-label="Send">
-            Envoyer
-          </button>
-        </form>
+        {children}
       </div>
     </div>
   );
