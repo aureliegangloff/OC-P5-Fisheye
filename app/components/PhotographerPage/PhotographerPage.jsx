@@ -10,13 +10,21 @@ import PhotographerGallery from "../PhotographerGallery/PhotographerGallery";
 
 import Modal from "../Modal/Modal";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function PhotographerProfile({
   photographer,
   photographerMedia,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isModalOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isModalOpen]);
 
   return (
     <>
@@ -59,7 +67,11 @@ export default function PhotographerProfile({
       </div>
 
       {isModalOpen && (
-        <Modal photographer={photographer} setIsModalOpen={setIsModalOpen} />
+        <Modal
+          photographer={photographer}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
       )}
     </>
   );

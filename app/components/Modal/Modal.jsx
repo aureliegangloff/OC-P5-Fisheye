@@ -1,7 +1,6 @@
 import styles from "./Modal.module.css";
 import { useEffect } from "react";
-
-export default function Modal({ photographer, setIsModalOpen }) {
+export default function Modal({ photographer, isModalOpen, setIsModalOpen }) {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -10,7 +9,9 @@ export default function Modal({ photographer, setIsModalOpen }) {
     };
 
     document.addEventListener("keydown", handleKeyDown);
-  });
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isModalOpen, setIsModalOpen]);
 
   return (
     <div
