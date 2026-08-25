@@ -10,13 +10,27 @@ import PhotographerGallery from "../PhotographerGallery/PhotographerGallery";
 
 import Modal from "../Modal/Modal";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PhotographerProfile({
   photographer,
   photographerMedia,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsModalOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isModalOpen]);
 
   return (
     <>
