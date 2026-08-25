@@ -1,6 +1,8 @@
 import { getPhotographer, getAllPhotographers } from "../../lib/prisma-db";
 import Header from "../../components/Header/Header.jsx";
 import PhotographerHeader from "../../components/PhotographerHeader/PhotographerHeader.jsx";
+import PhotographerGallery from "../../components/PhotographerGallery/PhotographerGallery.jsx";
+import Filter from "../../components/Filter/Filter";
 
 export default async function Home({ params }) {
   const { slug } = await params;
@@ -16,7 +18,12 @@ export default async function Home({ params }) {
       <main role="main">
         <section role="region" aria-label={`Page de ${photographer.name}`}>
           <PhotographerHeader photographer={photographer}></PhotographerHeader>
-          <main></main>
+          <main>
+            <Filter filter="popularity"></Filter>
+            <PhotographerGallery
+              photographerId={photographer.id}
+            ></PhotographerGallery>
+          </main>
         </section>
       </main>
     </div>

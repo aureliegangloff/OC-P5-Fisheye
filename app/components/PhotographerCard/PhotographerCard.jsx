@@ -1,4 +1,4 @@
-import styles from "./Card.module.css";
+import styles from "./PhotographerCard.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,9 +9,13 @@ export default function Card({ photographer }) {
         aria-label={photographer.name}
         href={`/photographe/${photographer.id}`}
       >
-        <div className={styles.portraitContainer}>
-          <Image src={`/${photographer.portrait}`} fill={true} alt="" />
-        </div>
+        <Image
+          src={`/${photographer.portrait}`}
+          width={200}
+          height={200}
+          alt=""
+        />
+
         <h2 className={styles.cardTitle}>{photographer.name}</h2>
       </Link>
       <p className={styles.cardLocation}>

@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import { getAllPhotographers } from "./lib/prisma-db";
 import Header from "./components/Header/Header.jsx";
-import Card from "./components/Card/Card.jsx";
+import PhotographerCard from "./components/PhotographerCard/PhotographerCard.jsx";
 
 export default async function Home() {
   const photographers = await getAllPhotographers();
@@ -12,7 +12,10 @@ export default async function Home() {
       <main role="main">
         <div className={styles.grid}>
           {photographers.map((photographer) => (
-            <Card photographer={photographer} key={photographer.id} />
+            <PhotographerCard
+              photographer={photographer}
+              key={photographer.id}
+            />
           ))}
         </div>
       </main>

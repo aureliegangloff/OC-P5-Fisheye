@@ -16,11 +16,7 @@
       text-decoration-color: var(--text-primary);
     }
   }
-}
-.portraitContainer {
-  position: relative;
-  width: 200px;
-  height: 200px;
+
   img {
     border-radius: 100%;
     object-fit: cover;

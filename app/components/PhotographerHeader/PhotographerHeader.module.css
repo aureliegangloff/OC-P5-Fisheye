@@ -6,22 +6,20 @@
   justify-content: space-between;
   padding: 55px 50px;
 
-  h1 {
+  .headerTitle {
     font-size: 6.4em;
     font-weight: 400;
     color: var(--text-primary);
   }
-}
-.portraitContainer {
-  position: relative;
-  width: 200px;
-  height: 200px;
   img {
+    width: 200px;
+    height: 200px;
     border-radius: 100%;
     object-fit: cover;
     overflow-clip-margin: unset;
   }
 }
+
 .location {
   font-size: 2.4em;
   color: var(--text-tertiary);
@@ -30,21 +28,4 @@
 .tagline {
   color: var(--text-secondary);
   font-size: 1.8em;
-}
-
-.contactButton {
-  background-color: var(--button-primary-bg);
-  color: var(--button-primary-text);
-  border: none;
-  border-radius: 5px;
-  padding: 21px 10px;
-  font-size: 2em;
-  font-family: var(--font-DMSans);
-  font-weight: bold;
-  cursor: pointer;
-  &:hover,
-  &:focus {
-    background-color: var(--button-primary-bg-hover);
-    color: var(--button-primary-text-hover);
-  }
 }
