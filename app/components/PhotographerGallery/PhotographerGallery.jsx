@@ -1,12 +1,7 @@
 import styles from "./PhotographerGallery.module.css";
-import { getAllMediasForPhotographer } from "../../lib/prisma-db";
 import Image from "next/image";
 
-export default async function PhotographerGallery({ photographerId }) {
-  const photographerMedia = await getAllMediasForPhotographer(
-    Number(photographerId),
-  );
-
+export default function PhotographerGallery({ photographerMedia }) {
   return (
     <section className={styles.photographerGallery}>
       {photographerMedia.map((media) => (

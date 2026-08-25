@@ -27,7 +27,13 @@ export default function Modal({ photographer, setIsModalOpen }) {
           onSubmit={(event) => event.preventDefault()}
         >
           <label htmlFor="firstName">Prénom</label>
-          <input id="firstName" name="firstName" type="text" required />
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            required
+            autoFocus
+          />
 
           <label htmlFor="lastName">Nom</label>
           <input id="lastName" name="lastName" type="text" required />
