@@ -1,4 +1,4 @@
-import styles from "./Modale.module.css";
+import styles from "./Modal.module.css";
 
 export default function Modal({ photographer, setIsModalOpen }) {
   return (
