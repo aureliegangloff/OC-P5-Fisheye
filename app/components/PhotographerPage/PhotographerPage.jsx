@@ -11,23 +11,20 @@ import PhotographerGallery from "../PhotographerGallery/PhotographerGallery";
 import { useState, useEffect } from "react";
 import ContactModal from "../ContactModal/ContactModal";
 
-export default function PhotographerProfile({
-  photographer,
-  photographerMedia,
-}) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+export default function PhotographerPage({ photographer, photographerMedia }) {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = isModalOpen ? "hidden" : "";
+    document.body.style.overflow = isContactModalOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isModalOpen]);
+  }, [isContactModalOpen]);
 
   return (
     <>
-      <div className="container" aria-hidden={isModalOpen}>
+      <div className="container" aria-hidden={isContactModalOpen}>
         <Header></Header>
         <main role="main">
           <section role="region" aria-label={`Page de ${photographer.name}`}>
@@ -42,7 +39,7 @@ export default function PhotographerProfile({
 
               <ContactButton
                 photographer={photographer}
-                setIsModalOpen={setIsModalOpen}
+                setIsContactModalOpen={setIsContactModalOpen}
               >
                 Contactez-moi
               </ContactButton>
@@ -65,11 +62,11 @@ export default function PhotographerProfile({
         </main>
       </div>
 
-      {isModalOpen && (
+      {isContactModalOpen && (
         <ContactModal
           photographer={photographer}
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
+          isContactModalOpen={isContactModalOpen}
+          setIsContactModalOpen={setIsContactModalOpen}
         />
       )}
     </>

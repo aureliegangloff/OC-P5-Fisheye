@@ -24,6 +24,8 @@ export default function Modal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="modalTitle"
+      aria-describedby="modalTitle"
+      aria-hidden="false"
     >
       <div className={styles.modalContent}>
         <button

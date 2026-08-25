@@ -4,8 +4,8 @@ import { useState } from "react";
 
 export default function ContactModal({
   photographer,
-  isModalOpen,
-  setIsModalOpen,
+  isContactModalOpen,
+  setIsContactModalOpen,
 }) {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -17,7 +17,7 @@ export default function ContactModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Données du formulaire:", formData);
-    setIsModalOpen(false);
+    setIsContactModalOpen(false);
   };
 
   const handleChange = (e) => {
@@ -29,8 +29,8 @@ export default function ContactModal({
 
   return (
     <Modal
-      isModalOpen={isModalOpen}
-      setIsModalOpen={setIsModalOpen}
+      isModalOpen={isContactModalOpen}
+      setIsModalOpen={setIsContactModalOpen}
       buttonLabel="Close Contact form"
     >
       <header className={styles.modalHeader}>

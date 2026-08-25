@@ -5,6 +5,11 @@
   grid-gap: 20px;
 }
 .mediaItem {
+  border: none;
+  background-color: transparent;
+  font-size: inherit;
+  cursor: pointer;
+
   img {
     object-fit: cover;
     border-radius: 5px;
