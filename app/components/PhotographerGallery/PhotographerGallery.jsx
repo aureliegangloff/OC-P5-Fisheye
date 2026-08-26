@@ -1,8 +1,8 @@
 "use client";
 import styles from "./PhotographerGallery.module.css";
 import Image from "next/image";
-import LightboxModal from "../LightboxModal/LightboxModal";
-import { useState } from "react";
+import MediaModal from "../MediaModal/MediaModal";
+import { useState, useEffect } from "react";
 
 export default function PhotographerGallery({ photographerMedia }) {
   const [selectedMedia, setSelectedMedia] = useState(null);
@@ -12,6 +12,14 @@ export default function PhotographerGallery({ photographerMedia }) {
     setSelectedMedia(media);
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = isModalOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isModalOpen]);
 
   return (
     <>
@@ -53,7 +61,7 @@ export default function PhotographerGallery({ photographerMedia }) {
       </section>
 
       {isModalOpen && (
-        <LightboxModal
+        <MediaModal
           photographerMedia={photographerMedia}
           selectedMedia={selectedMedia}
           setIsModalOpen={setIsModalOpen}

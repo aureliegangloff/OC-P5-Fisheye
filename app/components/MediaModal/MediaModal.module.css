@@ -1,0 +1,33 @@
+.contentModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mediaItem {
+  max-width: 1050px;
+  img {
+    object-fit: cover;
+    align-self: center;
+  }
+}
+
+.mediaTitle {
+  font-size: 2.4em;
+  color: var(--text-tertiary);
+}
+.previousButton,
+.nextButton {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 96px;
+  height: 96px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.previousButton {
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='48' viewBox='0 0 30 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M29.6399 42.36L11.3199 24L29.6399 5.64L23.9999 -2.46532e-07L-0.000107861 24L23.9999 48L29.6399 42.36Z' fill='%23911C1C'/%3E%3C/svg%3E%0A");
+}
+.nextButton {
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='48' viewBox='0 0 30 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.05138e-07 5.64L18.32 24L6.72563e-08 42.36L5.64 48L29.64 24L5.64 3.88195e-06L5.05138e-07 5.64Z' fill='%23911C1C'/%3E%3C/svg%3E%0A");
+}

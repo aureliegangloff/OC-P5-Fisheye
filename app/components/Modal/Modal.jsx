@@ -33,6 +33,7 @@ export default function Modal({
           className={styles.modalCloseButton}
           onClick={() => setIsModalOpen(false)}
           aria-label={buttonCloseLabel}
+          autoFocus
         ></button>
 
         {children}

@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 export default function Header({ page }) {
   return (
     <header className={styles.header} role="banner">
-      <Link aria-label="Fisheye Home page" href="/">
+      <Link aria-label="Fisheye Home page" href="/" autoFocus>
         <svg
           role="img"
           alt="Logo Fisheye"
