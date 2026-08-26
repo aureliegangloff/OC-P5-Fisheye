@@ -5,12 +5,12 @@ import LightboxModal from "../LightboxModal/LightboxModal";
 import { useState } from "react";
 
 export default function PhotographerGallery({ photographerMedia }) {
-  const [isLightboxModalOpen, setIsLightboxModalOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleMediaClick = (media) => {
-    setSelectedMedia(media.id);
-    setIsLightboxModalOpen(true);
+    setSelectedMedia(media);
+    setIsModalOpen(true);
   };
 
   return (
@@ -23,38 +23,40 @@ export default function PhotographerGallery({ photographerMedia }) {
             className={styles.mediaItem}
             onClick={() => handleMediaClick(media)}
           >
-            {media.image ? (
-              <Image
-                src={`/${media.image}`}
-                alt={media.title}
-                width={350}
-                height={300}
-              />
-            ) : (
-              <video
-                src={`/${media.video}`}
-                aria-label={media.title}
-                width={350}
-                height={300}
-              ></video>
-            )}
+            <figure>
+              {media.image ? (
+                <Image
+                  src={`/${media.image}`}
+                  alt={media.title}
+                  width={350}
+                  height={300}
+                />
+              ) : (
+                <video
+                  src={`/${media.video}`}
+                  aria-label={media.title}
+                  width={350}
+                  height={300}
+                ></video>
+              )}
 
-            <div>
-              <p className={styles.mediaTitle}>{media.title}</p>
-              <p className={styles.mediaLikes}>
-                {media.likes} <span className={styles.heart}>Like inactif</span>
-              </p>
-            </div>
+              <figcaption>
+                <p className={styles.mediaTitle}>{media.title}</p>
+                <p className={styles.mediaLikes}>
+                  {media.likes}{" "}
+                  <span className={styles.heart}>Like inactif</span>
+                </p>
+              </figcaption>
+            </figure>
           </button>
         ))}
       </section>
 
-      {isLightboxModalOpen && (
+      {isModalOpen && (
         <LightboxModal
           photographerMedia={photographerMedia}
-          isLightBoxModalOpen={isLightboxModalOpen}
-          setIsLightboxModalOpen={setIsLightboxModalOpen}
-          media={selectedMedia}
+          selectedMedia={selectedMedia}
+          setIsModalOpen={setIsModalOpen}
         />
       )}
     </>

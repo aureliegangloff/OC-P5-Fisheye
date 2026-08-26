@@ -2,11 +2,7 @@ import styles from "./ContactModal.module.css";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
 
-export default function ContactModal({
-  photographer,
-  isContactModalOpen,
-  setIsContactModalOpen,
-}) {
+export default function ContactModal({ photographer, setIsContactModalOpen }) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -29,9 +25,8 @@ export default function ContactModal({
 
   return (
     <Modal
-      isModalOpen={isContactModalOpen}
       setIsModalOpen={setIsContactModalOpen}
-      buttonLabel="Close Contact form"
+      buttonCloseLabel="Close Contact form"
     >
       <header className={styles.modalHeader}>
         <h1 id="modalTitle" className={styles.modalTitle}>

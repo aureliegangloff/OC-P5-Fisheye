@@ -65,7 +65,6 @@ export default function PhotographerPage({ photographer, photographerMedia }) {
       {isContactModalOpen && (
         <ContactModal
           photographer={photographer}
-          isContactModalOpen={isContactModalOpen}
           setIsContactModalOpen={setIsContactModalOpen}
         />
       )}

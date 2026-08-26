@@ -2,9 +2,9 @@ import styles from "./Modal.module.css";
 import { useEffect } from "react";
 export default function Modal({
   children,
-  isModalOpen,
   setIsModalOpen,
-  buttonLabel,
+  buttonCloseLabel,
+  style,
 }) {
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -16,11 +16,11 @@ export default function Modal({
     document.addEventListener("keydown", handleKeyDown);
 
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isModalOpen, setIsModalOpen]);
+  }, [setIsModalOpen]);
 
   return (
     <div
-      className={styles.modal}
+      className={`${styles.modal} ${style ? styles.light : ""}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modalTitle"
@@ -32,7 +32,7 @@ export default function Modal({
           type="button"
           className={styles.modalCloseButton}
           onClick={() => setIsModalOpen(false)}
-          aria-label={buttonLabel}
+          aria-label={buttonCloseLabel}
         ></button>
 
         {children}
