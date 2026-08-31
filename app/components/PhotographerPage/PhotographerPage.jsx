@@ -11,7 +11,7 @@ import PhotographerGallery from "../PhotographerGallery/PhotographerGallery";
 import { useState, useEffect, useMemo } from "react";
 import ContactModal from "../ContactModal/ContactModal";
 
-export default function PhotographerPage({ photographer, photographerMedia }) {
+export default function PhotographerPage({ photographer, photographerMedias }) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
@@ -24,8 +24,18 @@ export default function PhotographerPage({ photographer, photographerMedia }) {
 
   const [selectedFilter, setSelectedFilter] = useState("popularity");
 
+  // Mise à jour du média "liké"
+  const [medias, setMedias] = useState(photographerMedias); // récupération de la liste de média actuelle
+  const handleLike = (mediaId, newNbLikes) => {
+    setMedias((previousMedias) =>
+      previousMedias.map((media) =>
+        media.id === mediaId ? { ...media, likes: newNbLikes } : media,
+      ),
+    );
+  };
+
   const sortedMedia = useMemo(() => {
-    const sorted = [...photographerMedia]; //copie de photographerMedia
+    const sorted = [...medias]; //copie de la liste des medias
 
     switch (selectedFilter) {
       case "popularity":
@@ -37,14 +47,14 @@ export default function PhotographerPage({ photographer, photographerMedia }) {
       default:
         return sorted;
     }
-  }, [photographerMedia, selectedFilter]);
+  }, [medias, selectedFilter]);
 
   return (
     <>
       <div className="container" aria-hidden={isContactModalOpen}>
         <Header></Header>
-        <main role="main">
-          <section role="region" aria-label={`Page de ${photographer.name}`}>
+        <main>
+          <section aria-label={`Page de ${photographer.name}`}>
             <header className={styles.photographerHeader}>
               <div>
                 <h1 className={styles.headerTitle}>{photographer.name}</h1>
@@ -69,15 +79,16 @@ export default function PhotographerPage({ photographer, photographerMedia }) {
                 loading="eager"
               />
             </header>
-            <main>
+            <div>
               <Filter
                 selectedFilter={selectedFilter}
                 setSelectedFilter={setSelectedFilter}
               ></Filter>
               <PhotographerGallery
                 sortedMedia={sortedMedia}
+                handleLike={handleLike}
               ></PhotographerGallery>
-            </main>
+            </div>
           </section>
         </main>
       </div>

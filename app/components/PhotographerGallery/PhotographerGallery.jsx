@@ -2,12 +2,14 @@
 import styles from "./PhotographerGallery.module.css";
 import Image from "next/image";
 import MediaModal from "../MediaModal/MediaModal";
+import Likes from "../Likes/Likes";
 import { useState, useEffect } from "react";
 
-export default function PhotographerGallery({ sortedMedia }) {
+export default function PhotographerGallery({ sortedMedia, handleLike }) {
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Gestion de la modale
   const handleMediaClick = (media) => {
     setSelectedMedia(media);
     setIsModalOpen(true);
@@ -25,13 +27,8 @@ export default function PhotographerGallery({ sortedMedia }) {
     <>
       <section className={styles.photographerGallery}>
         {sortedMedia.map((media) => (
-          <button
-            type="button"
-            key={media.id}
-            className={styles.mediaItem}
-            onClick={() => handleMediaClick(media)}
-          >
-            <figure>
+          <figure key={media.id} className={styles.mediaItem}>
+            <button type="button" onClick={() => handleMediaClick(media)}>
               {media.image ? (
                 <Image
                   src={`/${media.image}`}
@@ -47,16 +44,13 @@ export default function PhotographerGallery({ sortedMedia }) {
                   height={300}
                 ></video>
               )}
+            </button>
 
-              <figcaption>
-                <p className={styles.mediaTitle}>{media.title}</p>
-                <p className={styles.mediaLikes}>
-                  {media.likes}{" "}
-                  <span className={styles.heart}>Like inactif</span>
-                </p>
-              </figcaption>
-            </figure>
-          </button>
+            <figcaption>
+              <p className={styles.mediaTitle}>{media.title}</p>
+              <Likes media={media} handleLike={handleLike}></Likes>
+            </figcaption>
+          </figure>
         ))}
       </section>
 

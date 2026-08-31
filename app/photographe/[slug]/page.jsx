@@ -9,7 +9,7 @@ export default async function Home({ params }) {
   const { slug } = await params;
   const photographer = await getPhotographer(Number(slug));
 
-  const photographerMedia = await getAllMediasForPhotographer(
+  const photographerMedias = await getAllMediasForPhotographer(
     Number(photographer.id),
   );
 
@@ -20,7 +20,7 @@ export default async function Home({ params }) {
   return (
     <PhotographerPage
       photographer={photographer}
-      photographerMedia={photographerMedia}
+      photographerMedias={photographerMedias}
     />
   );
 }
