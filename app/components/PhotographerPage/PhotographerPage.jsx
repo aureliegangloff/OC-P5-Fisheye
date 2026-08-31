@@ -8,7 +8,7 @@ import Image from "next/image";
 import Filter from "../Filter/Filter";
 import PhotographerGallery from "../PhotographerGallery/PhotographerGallery";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import ContactModal from "../ContactModal/ContactModal";
 
 export default function PhotographerPage({ photographer, photographerMedia }) {
@@ -21,6 +21,23 @@ export default function PhotographerPage({ photographer, photographerMedia }) {
       document.body.style.overflow = "";
     };
   }, [isContactModalOpen]);
+
+  const [selectedFilter, setSelectedFilter] = useState("popularity");
+
+  const sortedMedia = useMemo(() => {
+    const sorted = [...photographerMedia]; //copie de photographerMedia
+
+    switch (selectedFilter) {
+      case "popularity":
+        return sorted.sort((a, b) => b.likes - a.likes);
+      case "date":
+        return sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+      case "title":
+        return sorted.sort((a, b) => a.title.localeCompare(b.title, "fr"));
+      default:
+        return sorted;
+    }
+  }, [photographerMedia, selectedFilter]);
 
   return (
     <>
@@ -53,9 +70,12 @@ export default function PhotographerPage({ photographer, photographerMedia }) {
               />
             </header>
             <main>
-              <Filter filter="popularity"></Filter>
+              <Filter
+                selectedFilter={selectedFilter}
+                setSelectedFilter={setSelectedFilter}
+              ></Filter>
               <PhotographerGallery
-                photographerMedia={photographerMedia}
+                sortedMedia={sortedMedia}
               ></PhotographerGallery>
             </main>
           </section>

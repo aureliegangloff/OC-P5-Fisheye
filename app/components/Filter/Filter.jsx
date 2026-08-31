@@ -2,9 +2,8 @@
 import styles from "./Filter.module.css";
 import { useState } from "react";
 
-export default function Filter({ filter }) {
+export default function Filter({ selectedFilter, setSelectedFilter }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState(filter);
 
   const handleChange = (event) => {
     setIsOpen(false);
@@ -17,11 +16,10 @@ export default function Filter({ filter }) {
       <div className={styles.filterContainer}>
         <button
           type="button"
-          className={styles.filterButton}
+          className={`${styles.filterButton} ${styles.first}`}
           onClick={() => setIsOpen(!isOpen)}
           id="filter"
           value={selectedFilter}
-          role="button"
           aria-haspopup="listbox"
           aria-expanded={isOpen}
         >

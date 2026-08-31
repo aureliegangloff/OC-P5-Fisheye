@@ -5,12 +5,12 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function MediaModal({
-  photographerMedia,
+  sortedMedia,
   selectedMedia,
   setIsModalOpen,
 }) {
   // Recherche du media selectionné dans les médias du photographe
-  const initialIndex = photographerMedia.findIndex(
+  const initialIndex = sortedMedia.findIndex(
     (item) => item.id === selectedMedia.id,
   );
 
@@ -19,17 +19,17 @@ export default function MediaModal({
 
   const previousImage = () => {
     setCurrentIndex((index) =>
-      index === 0 ? photographerMedia.length - 1 : index - 1,
+      index === 0 ? sortedMedia.length - 1 : index - 1,
     );
   };
 
   const nextImage = () => {
     setCurrentIndex((index) =>
-      index === photographerMedia.length - 1 ? 0 : index + 1,
+      index === sortedMedia.length - 1 ? 0 : index + 1,
     );
   };
 
-  const currentMedia = photographerMedia[currentIndex];
+  const currentMedia = sortedMedia[currentIndex];
   console.log(currentMedia);
 
   return (

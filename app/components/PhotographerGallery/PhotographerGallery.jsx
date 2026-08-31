@@ -4,7 +4,7 @@ import Image from "next/image";
 import MediaModal from "../MediaModal/MediaModal";
 import { useState, useEffect } from "react";
 
-export default function PhotographerGallery({ photographerMedia }) {
+export default function PhotographerGallery({ sortedMedia }) {
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -24,7 +24,7 @@ export default function PhotographerGallery({ photographerMedia }) {
   return (
     <>
       <section className={styles.photographerGallery}>
-        {photographerMedia.map((media) => (
+        {sortedMedia.map((media) => (
           <button
             type="button"
             key={media.id}
@@ -62,7 +62,7 @@ export default function PhotographerGallery({ photographerMedia }) {
 
       {isModalOpen && (
         <MediaModal
-          photographerMedia={photographerMedia}
+          sortedMedia={sortedMedia}
           selectedMedia={selectedMedia}
           setIsModalOpen={setIsModalOpen}
         />
