@@ -8,12 +8,13 @@ import Image from "next/image";
 import Filter from "../Filter/Filter";
 import PhotographerGallery from "../PhotographerGallery/PhotographerGallery";
 
+import TotalLikesAndPrice from "../TotalLikesAndPrice/TotalLikesAndPrice";
+
 import { useState, useEffect, useMemo } from "react";
 import ContactModal from "../ContactModal/ContactModal";
 
 export default function PhotographerPage({ photographer, photographerMedias }) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-
   useEffect(() => {
     document.body.style.overflow = isContactModalOpen ? "hidden" : "";
 
@@ -21,8 +22,6 @@ export default function PhotographerPage({ photographer, photographerMedias }) {
       document.body.style.overflow = "";
     };
   }, [isContactModalOpen]);
-
-  const [selectedFilter, setSelectedFilter] = useState("popularity");
 
   // Mise à jour du média "liké"
   const [medias, setMedias] = useState(photographerMedias); // récupération de la liste de média actuelle
@@ -34,6 +33,8 @@ export default function PhotographerPage({ photographer, photographerMedias }) {
     );
   };
 
+  // Filtrage des médias en fonction du filtre sélectionné
+  const [selectedFilter, setSelectedFilter] = useState("popularity");
   const sortedMedia = useMemo(() => {
     const sorted = [...medias]; //copie de la liste des medias
 
@@ -88,6 +89,10 @@ export default function PhotographerPage({ photographer, photographerMedias }) {
                 sortedMedia={sortedMedia}
                 handleLike={handleLike}
               ></PhotographerGallery>
+              <TotalLikesAndPrice
+                medias={medias}
+                price={photographer.price}
+              ></TotalLikesAndPrice>
             </div>
           </section>
         </main>
