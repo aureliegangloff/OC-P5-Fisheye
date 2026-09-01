@@ -2,7 +2,7 @@
 import styles from "./MediaModal.module.css";
 import Modal from "../Modal/Modal";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MediaModal({
   sortedMedia,
@@ -14,23 +14,42 @@ export default function MediaModal({
     (item) => item.id === selectedMedia.id,
   );
 
-  // Index image active
+  // Gestion de la navigation entre les médias au clic
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
-
   const previousImage = () => {
     setCurrentIndex((index) =>
       index === 0 ? sortedMedia.length - 1 : index - 1,
     );
   };
-
   const nextImage = () => {
     setCurrentIndex((index) =>
       index === sortedMedia.length - 1 ? 0 : index + 1,
     );
   };
 
+  // Gestion de la navigation au clavier
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowLeft") {
+        setCurrentIndex((index) =>
+          index === 0 ? sortedMedia.length - 1 : index - 1,
+        );
+      }
+
+      if (event.key === "ArrowRight") {
+        setCurrentIndex((index) =>
+          index === sortedMedia.length - 1 ? 0 : index + 1,
+        );
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [sortedMedia.length]);
+
+  // Affichage du média actuel
   const currentMedia = sortedMedia[currentIndex];
-  console.log(currentMedia);
 
   return (
     <Modal
