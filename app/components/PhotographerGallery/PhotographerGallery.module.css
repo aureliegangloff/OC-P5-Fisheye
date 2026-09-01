@@ -4,6 +4,7 @@
   justify-content: space-between;
   grid-gap: 20px;
   align-items: start;
+  margin-bottom: 50px;
 }
 .mediaItem {
   button {
