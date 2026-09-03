@@ -28,7 +28,7 @@ export default function Likes({ media, handleLike }) {
         type="button"
         className={styles.heart}
         onClick={handleLikeClick}
-        aria-label={`Ajouter un like à ${media.title}`}
+        aria-label="likes"
       >
         {" "}
         Likes

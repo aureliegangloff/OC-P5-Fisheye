@@ -56,9 +56,8 @@ export default function MediaModal({
       setIsModalOpen={setIsModalOpen}
       buttonCloseLabel="Close dialog"
       style="light"
-      aria-label="image closeup view"
     >
-      <div className={styles.contentModal}>
+      <div className={styles.contentModal} aria-label="image closeup view">
         <button
           type="button"
           className={styles.previousButton}

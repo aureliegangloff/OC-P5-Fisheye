@@ -28,55 +28,57 @@ export default function ContactModal({ photographer, setIsContactModalOpen }) {
       setIsModalOpen={setIsContactModalOpen}
       buttonCloseLabel="Close Contact form"
     >
-      <header className={styles.modalHeader}>
-        <h1 id="modalTitle" className={styles.modalTitle}>
-          Contactez-moi
-          <br />
-          {photographer.name}
-        </h1>
-      </header>
-      <form className={styles.contactForm} onSubmit={handleSubmit}>
-        <label htmlFor="firstName">Prénom</label>
-        <input
-          id="firstName"
-          name="firstName"
-          type="text"
-          onChange={handleChange}
-          required
-          autoFocus
-        />
+      <div labelledby="modalTitle">
+        <header className={styles.modalHeader}>
+          <h1 id="modalTitle" className={styles.modalTitle}>
+            Contactez-moi
+            <br />
+            {photographer.name}
+          </h1>
+        </header>
+        <form className={styles.contactForm} onSubmit={handleSubmit}>
+          <label htmlFor="firstName">Prénom</label>
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            onChange={handleChange}
+            required
+            autoFocus
+          />
 
-        <label htmlFor="lastName">Nom</label>
-        <input
-          id="lastName"
-          name="lastName"
-          type="text"
-          onChange={handleChange}
-          required
-        />
+          <label htmlFor="lastName">Nom</label>
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            onChange={handleChange}
+            required
+          />
 
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          onChange={handleChange}
-          required
-        />
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            onChange={handleChange}
+            required
+          />
 
-        <label htmlFor="message">Votre message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="5"
-          onChange={handleChange}
-          required
-        />
+          <label htmlFor="message">Votre message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            onChange={handleChange}
+            required
+          />
 
-        <button type="submit" className={styles.formSubmit}>
-          Envoyer
-        </button>
-      </form>
+          <button type="submit" className={styles.formSubmit} aria-label="Send">
+            Envoyer
+          </button>
+        </form>
+      </div>
     </Modal>
   );
 }
