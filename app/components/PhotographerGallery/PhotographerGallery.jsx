@@ -28,7 +28,11 @@ export default function PhotographerGallery({ sortedMedia, handleLike }) {
       <section className={styles.photographerGallery}>
         {sortedMedia.map((media) => (
           <figure key={media.id} className={styles.mediaItem}>
-            <button type="button" onClick={() => handleMediaClick(media)}>
+            <button
+              type="button"
+              onClick={() => handleMediaClick(media)}
+              aria-label={media.title}
+            >
               {media.image ? (
                 <Image
                   src={`/${media.image}`}

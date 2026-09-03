@@ -2,7 +2,6 @@
 
 import styles from "./Likes.module.css";
 import { likeMedia } from "../../action/likeMedia";
-import { useState } from "react";
 
 export default function Likes({ media, handleLike }) {
   const handleLikeClick = async () => {
@@ -23,14 +22,13 @@ export default function Likes({ media, handleLike }) {
 
   return (
     <p className={styles.mediaLikes}>
-      {media.likes}{" "}
+      {media.likes}
       <button
         type="button"
         className={styles.heart}
         onClick={handleLikeClick}
         aria-label="likes"
       >
-        {" "}
         Likes
       </button>
     </p>
