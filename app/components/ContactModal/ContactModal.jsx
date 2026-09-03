@@ -28,7 +28,7 @@ export default function ContactModal({ photographer, setIsContactModalOpen }) {
       setIsModalOpen={setIsContactModalOpen}
       buttonCloseLabel="Close Contact form"
     >
-      <div labelledby="modalTitle">
+      <div aria-labelledby="modalTitle" aria-describedby="modalTitle">
         <header className={styles.modalHeader}>
           <h1 id="modalTitle" className={styles.modalTitle}>
             Contactez-moi

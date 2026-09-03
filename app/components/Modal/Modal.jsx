@@ -23,9 +23,8 @@ export default function Modal({
       className={`${styles.modal} ${style ? styles.light : ""}`}
       role="dialog"
       aria-modal="true"
-      aria-labelledby="modalTitle"
-      aria-describedby="modalTitle"
       aria-hidden="false"
+      aria-label="Modal window"
     >
       <div className={styles.modalContent}>
         <button

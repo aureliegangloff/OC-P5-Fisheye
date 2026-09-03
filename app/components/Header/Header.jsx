@@ -8,6 +8,7 @@ export default function Header({ page }) {
         <svg
           role="img"
           alt="Logo Fisheye"
+          aria-label="Logo Fisheye"
           width="200"
           height="50"
           viewBox="0 0 200 50"
