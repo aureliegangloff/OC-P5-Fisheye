@@ -11,6 +11,7 @@ export default function Likes({ media, handleLike }) {
     handleLike(media.id, newNbLikes);
 
     try {
+      // Mise à jour du nombre de likes dans la base de données
       await likeMedia(media.id, newNbLikes);
     } catch (error) {
       console.error("Erreur lors de la mise à jour du like :", error);

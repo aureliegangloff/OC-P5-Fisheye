@@ -14,6 +14,7 @@ import { useState, useEffect, useMemo } from "react";
 import ContactModal from "../ContactModal/ContactModal";
 
 export default function PhotographerPage({ photographer, photographerMedias }) {
+  // Ouverture et fermeture de la modale de contact
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   useEffect(() => {
     document.body.style.overflow = isContactModalOpen ? "hidden" : "";
@@ -23,7 +24,7 @@ export default function PhotographerPage({ photographer, photographerMedias }) {
     };
   }, [isContactModalOpen]);
 
-  // Mise à jour du média "liké"
+  // Mise à jour immédiate du média "liké"
   const [medias, setMedias] = useState(photographerMedias); // récupération de la liste de média actuelle
   const handleLike = (mediaId, newNbLikes) => {
     setMedias((previousMedias) =>
