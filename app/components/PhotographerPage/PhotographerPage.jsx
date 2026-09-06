@@ -14,7 +14,10 @@ import { useState, useEffect, useMemo } from "react";
 import ContactModal from "../ContactModal/ContactModal";
 
 export default function PhotographerPage({ photographer, photographerMedias }) {
-  // Ouverture et fermeture de la modale de contact
+  /**
+   *  Gère l'ouverture et la fermeture de la modale de contact
+   * @type {[boolean, function]} isContactModalOpen - État de la modale de contact et fonction pour le mettre à jour
+   */
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   useEffect(() => {
     document.body.style.overflow = isContactModalOpen ? "hidden" : "";
@@ -24,8 +27,12 @@ export default function PhotographerPage({ photographer, photographerMedias }) {
     };
   }, [isContactModalOpen]);
 
-  // Mise à jour immédiate du média "liké"
-  const [medias, setMedias] = useState(photographerMedias); // récupération de la liste de média actuelle
+  /**
+   * Met à jour le nombre de likes d'un média dans l'état local.
+   * @param {number} mediaId - L'identifiant du média à mettre à jour.
+   * @param {number} newNbLikes - Le nouveau nombre de likes à attribuer au média.
+   */
+  const [medias, setMedias] = useState(photographerMedias); // Liste actuelle de médias
   const handleLike = (mediaId, newNbLikes) => {
     setMedias((previousMedias) =>
       previousMedias.map((media) =>
@@ -34,10 +41,15 @@ export default function PhotographerPage({ photographer, photographerMedias }) {
     );
   };
 
-  // Filtrage des médias en fonction du filtre sélectionné
+  /**
+   * Trie les médias en fonction du filtre sélectionné.
+   * @param {Array} medias - Liste des médias à trier.
+   * @param {string} selectedFilter - Filtre sélectionné ("popularity", "date", "title").
+   * @returns {Array} - Liste triée des médias.
+   */
   const [selectedFilter, setSelectedFilter] = useState("popularity");
   const sortedMedia = useMemo(() => {
-    const sorted = [...medias]; //copie de la liste des medias
+    const sorted = [...medias]; //copie de la liste actuelle des medias
 
     switch (selectedFilter) {
       case "popularity":
