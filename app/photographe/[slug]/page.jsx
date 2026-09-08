@@ -1,11 +1,11 @@
-import PhotographerPage from "../../components/PhotographerPage/PhotographerPage";
+import Photographer from "../../page/Photographer/Photographer";
 import {
   getPhotographer,
   getAllPhotographers,
   getAllMediasForPhotographer,
 } from "../../lib/prisma-db";
 
-export default async function Home({ params }) {
+export default async function PhotographerPage({ params }) {
   const { slug } = await params;
   const photographer = await getPhotographer(Number(slug));
 
@@ -18,7 +18,7 @@ export default async function Home({ params }) {
   }
 
   return (
-    <PhotographerPage
+    <Photographer
       photographer={photographer}
       photographerMedias={photographerMedias}
     />

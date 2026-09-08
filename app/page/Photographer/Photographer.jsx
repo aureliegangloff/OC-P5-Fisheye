@@ -1,19 +1,19 @@
 "use client";
-import styles from "./PhotographerPage.module.css";
+import styles from "./Photographer.module.css";
 
-import Header from "../Header/Header";
-import ContactButton from "../ContactButton/ContactButton";
+import Header from "../../components/Header/Header";
+import ContactButton from "../../components/ContactButton/ContactButton";
 import Image from "next/image";
 
-import Filter from "../Filter/Filter";
-import PhotographerGallery from "../PhotographerGallery/PhotographerGallery";
+import Filter from "../../components/Filter/Filter";
+import PhotographerGallery from "../../components/PhotographerGallery/PhotographerGallery";
 
-import TotalLikesAndPrice from "../TotalLikesAndPrice/TotalLikesAndPrice";
+import TotalLikesAndPrice from "../../components/TotalLikesAndPrice/TotalLikesAndPrice";
 
 import { useState, useEffect, useMemo } from "react";
-import ContactModal from "../ContactModal/ContactModal";
+import ContactModal from "../../components/ContactModal/ContactModal";
 
-export default function PhotographerPage({ photographer, photographerMedias }) {
+export default function Photographer({ photographer, photographerMedias }) {
   /**
    *  Gère l'ouverture et la fermeture de la modale de contact
    * @type {[boolean, function]} isContactModalOpen - État de la modale de contact et fonction pour le mettre à jour
