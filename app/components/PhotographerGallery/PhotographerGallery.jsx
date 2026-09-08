@@ -1,7 +1,8 @@
 "use client";
 import styles from "./PhotographerGallery.module.css";
 import Image from "next/image";
-import MediaModal from "../MediaModal/MediaModal";
+import Modal from "../Modal/Modal";
+import Carrousel from "../Carrousel/Carrousel";
 import Likes from "../Likes/Likes";
 import { useState, useEffect } from "react";
 
@@ -59,11 +60,18 @@ export default function PhotographerGallery({ sortedMedia, handleLike }) {
       </section>
 
       {isModalOpen && (
-        <MediaModal
-          sortedMedia={sortedMedia}
-          selectedMedia={selectedMedia}
+        <Modal
           setIsModalOpen={setIsModalOpen}
-        />
+          buttonCloseLabel="Close dialog"
+          style="light"
+        >
+          <div className={styles.contentModal} aria-label="image closeup view">
+            <Carrousel
+              sortedMedia={sortedMedia}
+              selectedMedia={selectedMedia}
+            />
+          </div>
+        </Modal>
       )}
     </>
   );

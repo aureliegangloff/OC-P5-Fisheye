@@ -31,3 +31,9 @@
 .mediaTitle {
   padding-top: 10px;
 }
+
+.contentModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
